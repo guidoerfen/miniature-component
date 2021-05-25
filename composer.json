@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "miniature/di_container:dev-master": "*"
+    "miniature/di_container": "*"
   },
   "autoload": {
     "psr-4": {"Miniature\\Component\\": "src/"}
