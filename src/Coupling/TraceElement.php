@@ -9,7 +9,7 @@ namespace Miniature\Component\Coupling;
  *
  * @package Miniature\Component\Coupling
  * @author Guido Erfen <sourcecode@erfen.de>
- * @see https://github.com/guidoerfen/miniature/tree/main/Component#wiring-the-coupling
+ * @see https://github.com/guidoerfen/miniature-component#wiring-the-coupling
  */
 class TraceElement
 {

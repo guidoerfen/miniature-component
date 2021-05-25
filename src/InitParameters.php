@@ -14,8 +14,8 @@ use http\Exception\RuntimeException;
  *
  * @package Miniature\Component
  * @author Guido Erfen <sourcecode@erfen.de>
- * @see https://github.com/guidoerfen/miniature/tree/main/Component#parameter-injecting-path-to-the-configuration-directory
- * @see https://github.com/guidoerfen/miniature/tree/main/Component#configuring-environments
+ * @see https://github.com/guidoerfen/miniature-component#parameter-injecting-path-to-the-configuration-directory
+ * @see https://github.com/guidoerfen/miniature-component#configuring-environments
  */
 class InitParameters implements InitParametersInterface
 {

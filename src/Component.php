@@ -27,7 +27,7 @@ use Miniature\Component\Coupling\Supervisor;
  *
  * @package Miniature\Component
  * @author Guido Erfen <sourcecode@erfen.de>
- * @see https://github.com/guidoerfen/miniature/tree/main/Component#the-instance-of-the-component
+ * @see https://github.com/guidoerfen/miniature-component#the-instance-of-the-component
  */
 abstract class Component
 {

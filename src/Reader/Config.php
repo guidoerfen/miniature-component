@@ -10,7 +10,7 @@ use Miniature\Component\Reader\Value\ConfigParameters;
  * @package Miniature\Component\Reader
  * @package Miniature\Component
  * @author Guido Erfen <sourcecode@erfen.de>
- * @see https://github.com/guidoerfen/miniature/tree/main/Component#reading-the-configuration-directory
+ * @see https://github.com/guidoerfen/miniature-component#reading-the-configuration-directory
  */
 class Config
 {

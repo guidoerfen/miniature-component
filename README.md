@@ -418,7 +418,7 @@ this might look familiar to you.
 Indeed, we had considered adapting the syntax from Symfony but came to the conclusion
 that the use of the key `service` causes much confusion in the terminology.
 So mapping-branch it is named as what it represents: `di_mapping`.
-If you want to change the syntax you can do it by [overriding](https://github.com/guidoerfen/miniature/tree/main/DiContainer#syntax-overrides).
+If you want to change the syntax you can do it by [overriding](https://github.com/guidoerfen/miniature-di_container#syntax-overrides).
 
 
 <table style="border:0;width:100%;"><tr><td> PHP </td><td> YAML </td></tr>
@@ -858,7 +858,7 @@ $paramObject->setYamlParserDecorator(new MyOwnAPP\YamlParserDecorator());
 
 #### setDiSyntaxMapper()
 
-[overriding the syntax](https://github.com/guidoerfen/miniature/tree/main/DiContainer#syntax-overrides)
+[overriding the syntax](https://github.com/guidoerfen/miniature-di_container#syntax-overrides)
 
 ```PHP
 $paramObject->setDiSyntaxMapper(new Miniature\DiContainer\Syntax\MapperSymfonyStyle());
