@@ -2,6 +2,7 @@
   "name": "miniature/component",
   "description": "A template for a component of PHP-classeswith the purpose of a component architecture. A black-box approach on dependency injection.",
   "license": "MIT",
+  "minimum-stability" : "dev",
   "authors": [
     {
       "name": "Guido Erfen",
@@ -10,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "miniature/di_container": "*"
+    "miniature/di_container:dev-master": "*"
   },
   "autoload": {
     "psr-4": {"Miniature\\Component\\": "src/"}
