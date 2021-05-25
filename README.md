@@ -44,6 +44,49 @@ and that this package is absolutely not for you.
 
 <div>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;</div>
 
+# Installation
+### Using Composer
+
+```shell script
+composer require miniature/component
+```
+### Downloading Package
+
+You'll also need the
+[**DI-Container package**](https://github.com/guidoerfen/miniature-di_container).
+
+Unzip both to a directory named **`Miniature`**.
+Add to your autoloading something like the following:
+
+```PHP
+<?php
+
+function miniature_autoload($class)
+{
+    $fileName = str_replace('\\', '/', realpath(__DIR__) . '/' . $class ) . '.php';
+    if (preg_match('/^(.*\/Miniature)\/(\w+)\/((\w+\/)*)(\w+)\.php/', $fileName)) {
+        $newFileName = preg_replace(
+            '/^(.*\/Miniature)\/(\w+)\/((\w+\/)*)(\w+)\.php/',
+            '$1/$2/src/$3$5.php',
+            $fileName
+        );
+        if (is_file($newFileName)) {
+            require $newFileName;
+        }
+    }
+}
+spl_autoload_register('miniature_autoload');
+
+```
+
+Can be that you must adjust the file path concatenation for `filePath`
+by setting the relative path in the `filepath()` statement.
+
+
+
+
+<div>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;</div>
+
 # The instance of the Component
 ### The basic instantiating
 The basic class is an abstract Singleton.
