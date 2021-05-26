@@ -150,6 +150,14 @@ class SelfSpeakingComponent extends Component
     }
 }
 ```
+This move enables you to access the component instance "from any place at any time".  
+The call will always look the same.
+Even when you create it. You will never know that you create it.
+
+```PHP
+$instantlyNeededInstance = SelfSpeakingComponent::getInstance();
+```
+
 Learn about the content of the configuration directory and the dependeny wiring
 [here](#reading-the-configuration-directory).
 
