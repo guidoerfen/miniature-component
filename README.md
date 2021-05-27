@@ -3,8 +3,8 @@
 # Component
 ### Warning!
 This is still on an experimental level.
-We don't know if we've got everything together in the moment.
-Extensive testing needs to be done also.
+We don't know if we've got everything together currently.
+Extensive testing needs to be done as well.
 
 ### Purpose
 This is a template for a **component of PHP-classes**
@@ -35,7 +35,7 @@ and that this package is absolutely not for you.
 ### The basic steps of setting up a component:
 - Inheritance from the `Miniature\Component\Component` Singleton and giving that a **distinctive self speaking name**
 - Setting up a **configuration folder** and injecting the directory path information to the Component
-  - Providing configuratuion-files (PHP-array or YAML) ...
+  - Providing configuration-files (PHP-array or YAML) ...
     - that contain the **dependency injection wiring** and
     - the **component coupling wiring**
 - And you are ready to go
@@ -63,7 +63,7 @@ You'll also need the
 [**DI-Container package**](https://github.com/guidoerfen/miniature-di_container).
 
 Unzip both to a directory named **`Miniature`**.
-Add to your autoloading something like the following:
+Add to your autoload something like the following:
 
 ```PHP
 <?php
@@ -118,7 +118,7 @@ $selfSpeakingComponentInstance = SelfSpeakingComponent::getInstance();
 ```
 Most important here is the `protected static $instance` property.
 It ensures that always the same instance of the inheritor you create is used.
-Otherwise you will be confronted with unexpected behaviour as soon as you work with multiple component instances
+Otherwise, you will be confronted with unexpected behaviour as soon as you work with multiple component instances
 while everything seemed fine with a unique instance.
 
 This will work without errors, but it will not do anything.
@@ -232,8 +232,8 @@ thus consuming the contract.
 But you're not really done yet.
 Though you provided a contract by returning an interface implementation in your public methods
 you don't have the control about "who" is consuming it.
-Without any controll it very easily will result in multiple criss-cross connection spun
-among the components and thus a very undesrired structure. A failure of the architectural task.
+Without any control it very easily will result in multiple criss-cross connection spun
+among the components and thus a very undesired structure. A failure of the architectural task.
 
 Also, some restrictions about which classes from inside the DI-Container will make sense.
 
@@ -435,7 +435,7 @@ It might be different for classes that access the component from inside the DI-C
 #### Wildcard notation
 
 There is also the option, to grant a class in general.
-Maybe for testing or developement or it is a class residing inside the container
+Maybe for testing or development or it is a class residing inside the container
 dedicated to the communication with the component.
 ```YAML
             OnlyInTestingEnvironment: true
@@ -457,7 +457,7 @@ dedicated to the communication with the component.
 
 #### Hard wiring only
 Sorry, so far there will be no auto-wiring.
-Beside lack of developement time and possible ressource issues caused by the use of reflection classes
+Beside lack of development time and possible resource issues caused by the use of reflection classes
 we also think that, as far as interface-to-implementation mapping is concerned,
 you have all the means at hand already.
 
@@ -471,7 +471,7 @@ Let's start with simple examples in PHP and YAML.
 Be aware that [YAML-support is not available by default](#yaml-support).
 PHP on the other hand might have the advantage (or uncertainty) that structures can be produced dynamically.
 
-If you used to service-container configuarations in one of the popular MVC frameworks,
+If you used to service-container configurations in one of the popular MVC frameworks,
 this might look familiar to you.
 Indeed, we had considered adapting the syntax from Symfony but came to the conclusion
 that the use of the key `service` causes much confusion in the terminology.
@@ -589,7 +589,7 @@ params:
 Find the 2nd-level keys such as `person`, `address`, `person_manager`, `mysql_wrapper`,
 and `person_access` repeated in the `args` sub-branches with an `@`-prefix added.
 This is how classes are mapped as arguments (`args`) for the constructor injection.
-The naming is completely your choice. Consider namespacing.
+The naming is completely your choice. Consider name-spacing.
 As mentioned above, equal keys will lead to overrides.
 This is for the realisation of [environment-based overrides](#environment-based-overrides).
 
@@ -631,15 +631,16 @@ In the case of our example it is the standard call for a singleton pattern, whic
 ```YAML
         singleton: true
 ```
-The use of the key `singleton` is completely independent from the design pattern of the same name.
+The use of the key `singleton` is completely independent of the design pattern of the same name.
 By assigning a **`true`**  you force the class only to be instantiated once.
 This is not only useful for the cases where you would use the design pattern.
 This might always be useful in cases when you can be ensured that no results will be stored in member variables.
 
-This is the fastest and ressource saving way to access an instance.
-An interal key `instance` always will be checked.
+This is the fastest and resource saving way to access an instance.
+An internal key `instance`  will always be checked.
 If there is content it will be returned and all other proceedings will be skipped.
-To be true, this is not a substutute for a real singleton pattern.
+To be true, this is not a substitute for a real singleton pattern.
+(You might prefer to call it a cache.)
 You could instantiate the same class under two different keys, maybe using different parameters.
 Maybe this is your intention?
 
@@ -668,7 +669,7 @@ In case you dislike magic access you might prefer `get($string)` as shown here:
 ```PHP
 SelfSpeakingComponent::getInstance()->get('person_access')->somePublicMethod('string_parameter');
 ```
-If you feel tempted to declare everything `public` or question what this cumbesersome stuff is for,
+If you feel tempted to declare everything `public` or question what this cumbersome stuff is for,
 I'd suggest to gain info about the Cohesion & Coupling problem and what component architectures are about.
 
 
@@ -685,10 +686,10 @@ Retrieving instances from the container works via the `get`:
 $instanceFromMapping = $this->container->get('class_key_string');
 ```
 On the fly overriding happens via a second parameter, an array whose fields are indexed the same as the original arguments array.
-You might provide all parameters once again or you might just want to provide cerrtain parameters.
+You might provide all parameters once again or you might just want to provide certain parameters.
 In the second case string-indexes in the arguments are useful.
 
-Considering the excaple from above, let's assume the `person_access`-instance
+Considering the excample from above, let's assume the `person_access`-instance
 wants to retrieve a `person_manager` instance using replacement-classes
 for `@person` and `@adress`, it might look somehow like this:
 ```PHP
@@ -718,7 +719,7 @@ This approach would also work with numeric keys basically, but would one fell co
 <a name="reading-behavour"></a>
 ## Reading behaviour
 All files in the config-directory and it's sub-directories recursively will be read,
-given that the format is supported. Currently that is:
+given that the format is supported. Currently, that is:
 - **PHP**: The PHP-files always should return an array
 - **YAML**: This is depending on the PECL-extension for YAML is loaded. Alternatively the component class can be injected with a decorator that holds the PHP-based YAML-interpreter of youir choice. More about this [here](#yaml-support)
 
@@ -741,7 +742,7 @@ This is for the basic mechanism that enables us to
 ## YAML Support
 YAML is not part of the standard PHP installation.
 On the other hand we try hard to keep Miniature free of foreign dependency.
-Nevertheless for all the configuration work YAML is very much desireable.
+Nevertheless, for all the configuration work YAML is very much desirable.
 
 Therefore, currently there are two choices:
 - Installing the [PECL-extension for YAML](https://pecl.php.net/package/yaml)
@@ -789,8 +790,9 @@ Nothing more.
 
 # Configuring environments
 ## Parameter injection in general
-The basic configuration is done via a parameter object that is passed to the Container instance.  
-(We might add some more config options iin future in order to make this a bit more convenient.)
+### The InitParameters class
+The basic configuration is done via a parameter object named `InitParameters` that is passed to the Container instance.  
+*(We might add some more config options in future in order to make this a bit more convenient.)*
 
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
@@ -818,7 +820,7 @@ $instantlyNeededInstance = SelfSpeakingComponent::getInstance();
 ```
 
 
-#### InitParameters supports method-chaining:
+### InitParameters supports method-chaining:
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
     ->setAppRootPath(__DIR__ . '/..')
@@ -829,13 +831,13 @@ $paramObject = (new Miniature\Component\InitParameters())
 ## Path configuration
 
 All path-related setters accept relative paths based on the entry point script.
-Usually we assume this is the `index.php` located in a `public` diectory.
+Usually we assume this is the `index.php` located in a `public` directory.
 The setter methods will change them to relative paths and check the validity.
 This will also work with absolute paths.
 
 #### setAppRootPath()
 
-This is not necessary but it might make things more convenient.
+This is not rellay necessary, but it might make things more convenient.
 Once it is set, the other path related methods will concatenate to the root-path string.
 
 So insstead of setting the config-path relatively:
@@ -864,7 +866,7 @@ $paramObject->setConfigDirectory(__DIR__ . '/../config');
 
 #### setDotEnvPath()
 
-Self speaking this is the path where the **.env** file resides.
+Self speaking this is the path to the directory where the **.env** file resides.
 Learn more about the resulting behaviour
 [here](#reading-the-dot-env-file).
 
@@ -877,14 +879,15 @@ $paramObject->setDotEnvPath(__DIR__ . '/..');
 #### setEnv()
 
 Set the environment name directly with a string parameter.
-Userful in cases there is no **`.env`** file.
-Be aware that in doubt this will lead to an override of the vanue read in the
+Useful in cases there is no **`.env`** file.
+Be aware that in doubt this will lead to an override of the value read in the
 [**.env** file](#reading-the-dot-env-file).
-This might be useful for developement situations in which you want to simulate production behaviour.
+This might be useful for development situations in which you want to simulate production behaviour.
 
 #### setAvailableEnv()
 This should be a list of environment names that are known in your system.
-This list particulary is relevant in the [directory reading behaviour](#reading-behaviour)
+This list particularly is relevant in the [directory reading behaviour](#reading-behaviour)
+Any directory having been named like one in the list will not be automatically scanned recursively.
 
 It accepts an array of environment names ...
 ```PHP
@@ -899,7 +902,7 @@ $paramObject->setAvailableEnv('dev', 'test', 'prod', 'another');
 
 #### setEnvAllowingPublicAccess()
 As in [setAvailableEnv()](#setavailableenv) this is a list of environment names.
-It can be passed as an array or a varying number of string parameters.
+It can be passed as an array, or a varying number of string parameters.
 ```PHP
 $paramObject->setEnvAllowingPublicAccess('dev', 'test', 'another');
 ```
@@ -934,9 +937,9 @@ $paramObject->setDiSyntaxMapper(new Miniature\DiContainer\Syntax\MapperSymfonySt
 
 
 ## Setting available environments
-By default the Component class knows three environments `dev, `prod`, `test`.
+By default, the Component class knows three environments `dev, `prod`, `test`.
 You can change that completely to your needs.
-You can have as many as you wand and you can name them as you want.
+You can have as many as you want, and you can name them as you want.
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
     ->setAvailableEnv('develop', 'testing', 'production', 'another');
@@ -947,17 +950,17 @@ $paramObject = (new Miniature\Component\InitParameters())
 The **.env** had become a standard for configuring valued that will be written the superglobals.
 Miniature will not write to the globals and will not read from the globals.
 But it will read the **.env** if you want.
-Currently the only purpose for this is the value `APP_ENV` which will be transmitted to
+Currently, the only purpose for this is the value `APP_ENV` which will be transmitted to
 the **`$env`** flag of your component class, representing the
 [current environment](#current-environment).
 
-Be aware that the call of [setEnv()](#setenv) will override this value.
+Be aware the call of [setEnv()](#setenv) will override this value.
 
 
 ### Current environment
 
-The current environment is named by a string naming the envirionment the local machine is providing.
-Usually it is somethjing like `developement`, `production`, or  `test`.
+The current environment is named by a string naming the environment the local machine is providing.
+Usually it is something like `developement`, `production`, or  `test`.
 
 The value might com from the [**`.env`**-file](#reading-the-dot-env-file)
 or it might be [set directly](#setenv).
