@@ -1,4 +1,4 @@
-![miniature project](img/miniature-logo-100px.png){:style="float: right;margin-right: 7px;margin-top: 7px;"}
+![miniature project](img/miniature-logo-100px.png){: style="float:right"}
 
 
 # Component
