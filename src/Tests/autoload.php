@@ -6,7 +6,7 @@
 function miniature_component_test_autoload($class)
 {
     $fileName = str_replace('\\', '/', realpath(__DIR__) . '/' . $class ) . '.php';
-    echo "$fileName<br>\n";
+    
     if (is_file($fileName)) {
         require $fileName;
     }
@@ -17,7 +17,6 @@ function miniature_component_test_autoload($class)
                 '$1/$2/src/$3$5.php',
                 $fileName
             );
-            #echo "$newFileName<br>\n";
             if (is_file($newFileName)) {
                 require $newFileName;
             }
