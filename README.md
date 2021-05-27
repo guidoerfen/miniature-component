@@ -1,5 +1,4 @@
-![miniature project](img/miniature-logo-100px.png){: style="float:right"}
-
+<img align="right" width="100" height="100" src="https://github.com/guidoerfen/miniature-component/blob/master/img/miniature-logo-100px.png">
 
 # Component
 ### Warning!
