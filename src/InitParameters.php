@@ -124,9 +124,9 @@ class InitParameters implements InitParametersInterface
     {
         $this->configDirectoryPath = $this->getRealPath($path). '/';
         if (! is_dir($this->configDirectoryPath) || $this->configDirectoryPath === '/') {
-            throw new \InvalidArgumentException(
-                "String '$path' resulting in '$this->configDirectoryPath' does not point to a directory path!" .
-                "Use setConfigDirectory(\$dirName) if you want to add a directory name to root path '$this->appRootPath'."
+            throw new \InvalidArgumentException("\n".
+                "String '$path' resulting in '$this->configDirectoryPath' does not point to a directory path! \n" .
+                "Use setConfigDirectory(\$dirName) if you want to add a directory name to root path '$this->appRootPath'.\n"
             );
         }
         return $this;
@@ -151,9 +151,9 @@ class InitParameters implements InitParametersInterface
     {
         $this->dotEnvFilePath = $this->getRealPath($path). '/.env';
         if (! is_file($this->dotEnvFilePath) || $this->dotEnvFilePath === '/') {
-            throw new \InvalidArgumentException(
-                "String '$path' resulting in '$this->dotEnvFilePath' does not point to a directory path!" .
-                "Use setDotEnvFromRoot(\$dirName) if you want to add a file name to root path '$this->appRootPath'."
+            throw new \InvalidArgumentException("\n".
+                "String '$path' resulting in '$this->dotEnvFilePath' does not point to a directory path that contains the '.env'-file! \n" .
+                "Use setDotEnvFromRoot(\$dirName) if you want to add a file name to root path '$this->appRootPath'.\n"
             );
         }
         return $this;

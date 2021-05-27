@@ -789,15 +789,15 @@ Nothing more.
 
 # Configuring environments
 ## Parameter injection in general
-The basic configuration is done via a parameter object that is passed to the Container instance.
-(We might add some mor config options iin future in order to make this a bit more convenient.)
+The basic configuration is done via a parameter object that is passed to the Container instance.  
+(We might add some more config options iin future in order to make this a bit more convenient.)
 
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
     ->setConfigDirectory( __DIR__ . '/../config');
 $selfSpeakingComponentInstance = SelfSpeakingComponent::getInstance($paramObject);
 ```
-In longer terms the auto-injection is the better choice:
+In longer terms the auto-injection is the better choice ...
 
 ```PHP
 class SelfSpeakingComponent extends Component 
@@ -811,7 +811,14 @@ class SelfSpeakingComponent extends Component
     }
 }
 ```
-InitParameters supports method-chaining:
+... since it enables you to access "from any place at any time":
+
+```PHP
+$instantlyNeededInstance = SelfSpeakingComponent::getInstance();
+```
+
+
+#### InitParameters supports method-chaining:
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
     ->setAppRootPath(__DIR__ . '/..')
