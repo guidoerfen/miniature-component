@@ -790,6 +790,7 @@ Nothing more.
 # Configuring environments
 ## Parameter injection in general
 The basic configuration is done via a parameter object that is passed to the Container instance.
+(We might add some mor config options iin future in order to make this a bit more convenient.)
 
 ```PHP
 $paramObject = (new Miniature\Component\InitParameters())
