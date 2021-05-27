@@ -1,6 +1,4 @@
-<span class="right">![component architecture](img/miniature-logo-100px.png)</span>
-
-
+<img src="/guidoerfen/miniature-component/raw/master/img/miniature-logo-100px.png" alt="component architecture" style="float:right;">
 
 
 # Component
@@ -959,7 +957,3 @@ or it might be [set directly](#setenv).
 Anyway, it has certain effects, most notably in the [reading behaviour](#reading-behaviour)
 during the scanning of the [configuration directory](#setconfigdirectory).
 
-
-
-
-<style type="text/css">.right img { float: right; }</style>
