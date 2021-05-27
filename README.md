@@ -1,4 +1,4 @@
-<img src="/guidoerfen/miniature-component/raw/master/img/miniature-logo-100px.png" alt="component architecture" style="float:right;">
+<img src="/guidoerfen/miniature-component/raw/master/img/miniature-logo-100px.png" alt="component architecture" align="right">
 
 
 # Component
