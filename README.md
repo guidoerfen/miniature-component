@@ -791,7 +791,7 @@ Nothing more.
 # Configuring environments
 ## Parameter injection in general
 ### The InitParameters class
-The basic configuration is done via a parameter object named `InitParameters` that is passed to the Container instance.  
+The basic configuration is done via a parameter object named `InitParameters` that is passed to the Container instance.
 *(We might add some more config options in future in order to make this a bit more convenient.)*
 
 ```PHP
