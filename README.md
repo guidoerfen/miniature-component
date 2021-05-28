@@ -40,9 +40,11 @@ and that this package is absolutely not for you.
     - the **component coupling wiring**
 - And you are ready to go
 
-
-
-
+### One note before you continue:
+This package provides certain mechanisms that might be useful.
+This is no absolutely guarantee for sufficiency.
+Other decisions might be way more urgent,
+such as bundling, separate deployment and versioning.
 
 
 
