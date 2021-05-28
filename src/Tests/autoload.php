@@ -6,7 +6,7 @@
 function miniature_component_test_autoload($class)
 {
     $fileName = str_replace('\\', '/', realpath(__DIR__) . '/' . $class ) . '.php';
-    
+
     if (is_file($fileName)) {
         require $fileName;
     }
