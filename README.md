@@ -41,10 +41,12 @@ and that this package is absolutely not for you.
 - And you are ready to go
 
 ### One note before you continue:
-This package provides certain mechanisms that might be useful.
-This is no absolutely guarantee for sufficiency.
-Other decisions might be way more urgent,
-such as bundling, separate deployment and versioning.
+This package provides certain dependency wiring and black-/grey-/white-boxing mechanisms that might be useful
+for releasing component architectures.
+This is mainly about structure, access controll and dependency management.
+This doesn't mean that these are most sufficient for the task of component architecture as such.
+Other means might be way more sustainable.
+Consider bundling, separate deployment and versioning first.
 
 
 
