@@ -40,9 +40,13 @@ and that this package is absolutely not for you.
     - the **component coupling wiring**
 - And you are ready to go
 
-
-
-
+### One note before you continue:
+This package provides certain dependency wiring and black-/grey-/white-boxing mechanisms that might be useful
+for releasing component architectures.
+This is mainly about structure, access controll and dependency management.
+This doesn't mean that these are most sufficient for the task of component architecture as such.
+Other means might be way more sustainable.
+Consider bundling, separate deployment and versioning first.
 
 
 
