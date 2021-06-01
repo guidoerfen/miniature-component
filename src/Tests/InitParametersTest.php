@@ -13,7 +13,9 @@ use PHPUnit\Framework\TestCase;
 
 class InitParametersTest extends TestCase
 {
-
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *               CONF
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public function testConfPathIsFound()
     {
         $dirname = __DIR__ . '/TestEnv/config';
@@ -27,7 +29,6 @@ class InitParametersTest extends TestCase
         );
     }
 
-
     public function testFalseConfPathThrowsException()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -36,6 +37,9 @@ class InitParametersTest extends TestCase
             ->setConfigDirectory($dirname);
     }
 
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *               DotENV
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public function testDotEnvPathIsFound()
     {
         $dirname = __DIR__ . '/TestEnv/dotEnvDirectory';
@@ -49,16 +53,14 @@ class InitParametersTest extends TestCase
         );
     }
 
-
     public function testFalseDotEnvPathThrowsException()
     {
         $this->expectException(\InvalidArgumentException::class);
         $dirname =  __DIR__ . '/TestEnv/config';;
-        $paramObject = (new InitParameters())
-            ->setDotEnvPath($dirname);
+        (new InitParameters())->setDotEnvPath($dirname);
     }
 
-
-
-
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 }
