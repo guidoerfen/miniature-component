@@ -52,8 +52,16 @@ abstract class Component
     private array   $possibleEnv             = ['dev', 'prod', 'test'];
     private array   $publicAccessAllowingEnv = ['dev', 'test'];
 
-
-
+    protected function getProperties(): array
+    {
+        return [
+            'env'                     => $this->env,
+            'envValues'               => $this->envValues,
+            'configValues'            => $this->configValues,
+            'possibleEnv'             => $this->possibleEnv,
+            'publicAccessAllowingEnv' => $this->publicAccessAllowingEnv,
+        ];
+    }
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
