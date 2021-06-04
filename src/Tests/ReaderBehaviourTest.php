@@ -133,8 +133,6 @@ class ReaderBehaviourTest extends TestCase
         );
     }
 
-
-
     public function testClass03isOverriddenInSubfolder()
     {
         $string   = $this->configValues['di_mapping']['class03_overridden_in_subfolder']['args']['string_param'];
@@ -146,7 +144,6 @@ class ReaderBehaviourTest extends TestCase
             "This most likelyy means the reader did not enter the 'dev' directory in '" . $this->dirname . "/dev'. \n"
         );
     }
-
 
     public function testClass04isOverriddenInSubfolderDev()
     {
