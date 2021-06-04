@@ -10,10 +10,10 @@ use Miniature\Component\Reader\YamlParserDecoratorInterface;
  */
 class ConfigParameters
 {
-    private string $directory;
+    private string  $directory;
     private ?string $env;
-    private array  $possibleEnv;
-    private ?YamlParserDecoratorInterface $yamlParserDecorator;
+    private array   $possibleEnv;
+    private ?YamlParserDecoratorInterface $yamlParserDecorator = null;
 
 
 

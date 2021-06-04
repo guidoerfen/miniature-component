@@ -2,15 +2,17 @@
 
 namespace Miniature\Component\Tests;
 
-use Miniature\Component\Component;
-use Miniature\Component\InitParameters;
-use Miniature\Component\Tests\TestEnv\Components\VerboseComponent;
+use Miniature\Component\Reader\Config;
+use Miniature\Component\Reader\Value\ConfigParameters;
 use PHPUnit\Framework\TestCase;
 
 require './autoload.php';
 
 class ReaderBehaviourTest extends TestCase
 {
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *          INIT / GENERAL
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     protected array  $configValues;
     protected string $dirname;
     protected string $originalText = 'original text';
@@ -18,13 +20,15 @@ class ReaderBehaviourTest extends TestCase
     protected function SetUp() : void
     {
         $this->dirname = __DIR__ . '/TestEnv/config';
-        $this->configValues = VerboseComponent::getInstance(
-            (new InitParameters())
-                ->setConfigDirectory($this->dirname)
-                ->setEnv('dev')
-                ->setAvailableEnv(['dev', 'do-not-scan'])
-        )->getConfigValues();
+
+        $parameters = (new ConfigParameters())
+            ->setDirectory($this->dirname)
+            ->setEnv('dev')
+            ->setAvailableEnv(['dev', 'do-not-scan']);
+        $config = new Config($parameters);
+        $this->configValues = $config->getValues();
     }
+
 
     protected function getMissingFieldMessage(string $offset, bool $isset, bool $isArray, bool $isNotEmpty)
     {
@@ -33,6 +37,13 @@ class ReaderBehaviourTest extends TestCase
     }
 
 
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *          1st RECOUSION LEVEL
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public function mappingOffsetProvider()
     {
         return [
@@ -58,6 +69,13 @@ class ReaderBehaviourTest extends TestCase
 
 
 
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *          2nd RECOURSION LEVEL
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public function classOffsetProvider()
     {
         return [
@@ -85,6 +103,13 @@ class ReaderBehaviourTest extends TestCase
         );
     }
 
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *          OVERRIDE BEHAVIOUR
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public function testClass01isNotOverridden()
     {
         $mapping = $this->configValues['di_mapping']['class01'];
@@ -134,7 +159,4 @@ class ReaderBehaviourTest extends TestCase
             "This most likelyy means the reader did not enter the 'dev' directory in '" . $this->dirname . "/dev'. \n"
         );
     }
-
-
-
 }
