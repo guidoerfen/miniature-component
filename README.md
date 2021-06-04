@@ -551,7 +551,7 @@ di_mapping:
         args:
           - '@person'
     person_manager:
-        class:
+        class: AppDemo\PersonManager
         args:
             person: '@person'
             address: '@address'
