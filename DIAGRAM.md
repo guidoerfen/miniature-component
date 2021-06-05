@@ -3,8 +3,8 @@
 # An extended Component Diagramm
 
 This is a loose-syntax diagram of what the
-[Miniature\Component](https://github.com/guidoerfen/miniature-component#wiring-the-coupling)
-wiring is trying to achieve.
+[Miniature\Component wiring](https://github.com/guidoerfen/miniature-component#wiring-the-coupling)
+is trying to achieve.
 The interface notation might appear a bit redundant.
 They just were adopted from the average component diagram notation
 and since these components are globally accessible singletons
@@ -14,6 +14,7 @@ The method-call arrows show what is allowed per coupling-wiring and thus illustr
 
 * `ComponentA->provideA1()` allows only to be called by `ComponentB->consumeA1()`
 * While `ComponentB->consumeA1()` allows only to be called by two classes from inside it's own DI-Container. No methods are specified in this example, but self-speaking it could be done.
+* But class `B1`is not allowed to call `ComponentB->consumeA1()`
 
 All those public `provide` and `consume` methods are all getter methods actually.
 You might consider them getters sitting on an castle wall
