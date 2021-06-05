@@ -319,6 +319,10 @@ class SelfSpeakingComponent extends Component
 <a name="di-mapping"></a>
 # Wiring the Coupling
 
+You might want to observe
+[an overview diagram](https://github.com/guidoerfen/miniature-component/blob/master/DIAGRAM.md)
+first for general better understanding.
+
 These wiring examples are roughly based on the component-class example
 [shown above](#coupling-detection-and-protection).
 We just assume there is a `The2ndComponent`and some classes from the inside of the container.
