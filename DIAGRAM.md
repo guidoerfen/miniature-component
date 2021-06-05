@@ -6,8 +6,9 @@ This is a loose-syntax diagram of what the
 [Miniature\Component wiring](https://github.com/guidoerfen/miniature-component#wiring-the-coupling)
 is trying to achieve.
 The interface notation might appear a bit redundant.
-They just were adopted from the average component diagram notation
-and since these components are globally accessible singletons
+They just were adopted from the average
+[component diagram](https://en.wikipedia.org/wiki/Component_diagram)
+notation and since these components are globally accessible singletons
 they do not mean then components must implement a certain interface.
 The wiring is the contract.
 The method-call arrows show what is allowed per coupling-wiring and thus illustrate how the interface-providing is released.
