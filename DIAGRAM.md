@@ -10,6 +10,7 @@ They just were adopted from the average
 [component diagram](https://en.wikipedia.org/wiki/Component_diagram)
 notation and since these components are globally accessible singletons
 they do not mean then components must implement a certain interface.
+(Rather the return type hint should be an interface.)
 The wiring is the contract.
 The method-call arrows show what is allowed per coupling-wiring and thus illustrate how the interface-providing is released.
 
