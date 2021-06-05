@@ -26,6 +26,7 @@ which in return provide access to well-chosen functionality.
 
 ![A Component Diagram](img/component-diagram.png)
 
+The relations as shown above would result in a wiring like this:
 
 ```YML
 coupling:
@@ -51,7 +52,7 @@ coupling:
     ComponentC:
         consumeA3:
             C2: true
-    Component:D
+    ComponentD:
         consumeB1:
             D1: true
             D2: true
