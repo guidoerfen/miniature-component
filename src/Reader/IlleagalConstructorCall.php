@@ -121,7 +121,7 @@ class IlleagalConstructorCall
         return false;
     }
 
-
+    const FILE_PATH_KEY = 'file_path';
 
     private function readFile($filepath, $filename)
     {
@@ -130,6 +130,7 @@ class IlleagalConstructorCall
             return;
         }
         foreach ($this->mapping as $params) {
+            $params[self::FILE_PATH_KEY] = $filepath;
             $detector = new ConstructorCallDetector($content, $params, $this->logger);
             $this->errorCount += $detector->detect();
         }
