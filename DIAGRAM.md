@@ -5,20 +5,29 @@
 This is a loose-syntax diagram of what the
 [Miniature\Component wiring](https://github.com/guidoerfen/miniature-component#wiring-the-coupling)
 is trying to achieve.
+One goal is to prevent criss-cross access all over the system (resulting in dense coupling)
+and control on the access directions.
+
 The interface notation might appear a bit redundant.
 They just were adopted from the average
 [component diagram](https://en.wikipedia.org/wiki/Component_diagram)
 notation and since these components are globally accessible singletons
 they do not mean then components must implement a certain interface.
 (Rather the return type hint should be an interface.)
-The wiring is the contract.
-The method-call arrows show what is allowed per coupling-wiring and thus illustrate how the interface-providing is released.
+
+[The wiring](#wiring-yaml)<!-- @IGNORE PREVIOUS: anchor --> is the contract here:
+The permission of a certain method to access a certain container method.
+The method-call arrows illustrate which accesses are granted.
+As far as the accesses between components are concerend the grant/method-call arrows
+illustrate how the interfaces between them are released.
 
 * `ComponentA->provideA1()` allows only to be called by `ComponentB->consumeA1()`
 * While `ComponentB->consumeA1()` allows only to be called by two classes from inside it's own DI-Container. No methods are specified in this example, but self-speaking it could be done.
 * But class `B1`is not allowed to call `ComponentB->consumeA1()`
+* `ComponentD` isn't granted to access `ComponentA` and `ComponentB` at all.
+* The two connections between `ComponentA` and `ComponentB` illustrate how *one* interface can be realized by connectiong multiple methods.
 
-All those public `provide` and `consume` methods are all getter methods actually.
+All those public `provide` and `consume` methods in the component in srtances are all getter methods actually.
 You might consider them getters sitting on an castle wall
 on demand lowering down service staff on ropes in both directions.
 
@@ -29,6 +38,7 @@ which in return provide access to well-chosen functionality.
 
 ![A Component Diagram](img/component-diagram.png)
 
+<a name="wiring-yaml"></a>
 The relations as shown above would result in a wiring like this:
 
 ```YML

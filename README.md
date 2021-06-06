@@ -32,6 +32,10 @@ is not on your agenda
 it is likely that you are using a different terminology
 and that this package is absolutely not for you.
 
+You might want to visit an
+[extended diagram](https://github.com/guidoerfen/miniature-component/blob/master/DIAGRAM.md)
+first in order to get a better idea.
+
 ### The basic steps of setting up a component:
 - Inheritance from the `Miniature\Component\Component` Singleton and giving that a **distinctive self speaking name**
 - Setting up a **configuration folder** and injecting the directory path information to the Component
