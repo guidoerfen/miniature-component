@@ -3,9 +3,9 @@
 namespace Miniature\Component\Reader;
 
 use Miniature\Component\Component;
+use Miniature\Component\Reader\Value\ConstructorCallDetector;
 use Miniature\Component\Reader\Value\IlleagalConstructorCallParameters;
 use Miniature\DiContainer\DiContainer;
-use phpDocumentor\Reflection\Types\This;
 use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger;
 
 class IlleagalConstructorCall
@@ -17,8 +17,9 @@ class IlleagalConstructorCall
     private array       $excludeDirectories = ['vendor' => true];
     private string      $libInstallationPath;
 
-    private int $errorCount = 0;
-    private array $supportedFileNameSuffixes = ['html', 'twig', 'volt', 'blade', 'smarty'];
+    private array       $mapping;
+    private int         $errorCount = 0;
+    private array       $supportedFileNameSuffixes = ['html', 'twig', 'volt', 'blade', 'smarty'];
 
     private function getRealPath(string $path)   : string
     {
@@ -32,7 +33,7 @@ class IlleagalConstructorCall
         $this->excludeDirectories  = $parameters->getExcludeDirectories();
         $this->logger              = $parameters->getLogger();
         $this->component           = $parameters->getComponent();
-
+        $this->mapping             = $this->diContainer->getClassRegExMapping();
         $this->libInstallationPath = $this->getRealPath(__DIR__ . '/../../..');
     }
 
@@ -127,6 +128,10 @@ class IlleagalConstructorCall
         $content = file_get_contents($filepath);
         if (strpos($content, '<?php') === false) {
             return;
+        }
+        foreach ($this->mapping as $params) {
+            $detector = new ConstructorCallDetector($content, $params, $this->logger);
+            $this->errorCount += $detector->detect();
         }
         echo "$filepath, $filename \n";
     }
