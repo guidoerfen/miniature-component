@@ -29,7 +29,8 @@ illustrate how the interfaces between them are released.
 
 All those public `provide` and `consume` methods in the component instances are all getter methods actually.
 You might consider them getter-guards sitting on an castle wall
-on demand lowering down service staff on ropes in both directions, outside and inside of the castle.
+on demand lowering down service staff on ropes in both directions, to the outside and the inside of the castle.
+(Slightly confusingly this is the opposite direction of the granted-method-call arrows.)
 
 Don't misunderstand the method-call and instantiation arrows as data stream directions.
 Directions could be either ways in the end result.
