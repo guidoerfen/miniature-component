@@ -27,9 +27,9 @@ illustrate how the interfaces between them are released.
 * `ComponentD` isn't granted to access `ComponentA` and `ComponentB` at all.
 * The two connections between `ComponentA` and `ComponentB` illustrate how *one* interface can be realized by connectiong multiple methods.
 
-All those public `provide` and `consume` methods in the component in srtances are all getter methods actually.
+All those public `provide` and `consume` methods in the component instances are all getter methods actually.
 You might consider them getters sitting on an castle wall
-on demand lowering down service staff on ropes in both directions.
+on demand lowering down service staff on ropes in both directions, outside and inside of the castle.
 
 Don't misunderstand the method-call and instantiation arrows as data stream directions.
 Directions could be either ways in the end result.
