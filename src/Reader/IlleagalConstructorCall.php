@@ -121,7 +121,7 @@ class IlleagalConstructorCall
         return false;
     }
 
-    const FILE_PATH_KEY = 'file_path';
+    const FILE_PATH_KEY = 'filePath';
 
     private function readFile($filepath, $filename)
     {
