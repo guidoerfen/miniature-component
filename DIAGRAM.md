@@ -12,11 +12,12 @@ The interface notation might appear a bit redundant.
 They just were adopted from the average
 [component diagram](https://en.wikipedia.org/wiki/Component_diagram)
 notation and since these components are globally accessible singletons
-they do not mean then components must implement a certain interface.
-(Rather the return type hint should be an interface.)
+they do not mean that components must implement a certain interface.
+*(Rather the return type hint should be an interface.
+Of course if you want to keep Componts interchangeable the component classes should implement an interface.)*
 
-[The wiring](#wiring-yaml)<!-- @IGNORE PREVIOUS: anchor --> is the contract here:
-The permission of a certain method to access a certain container method.
+[The wiring](#wiring-yaml)<!-- @IGNORE PREVIOUS: anchor --> is the way more heavyweight contract here:
+Each wiring is a permission of a certain method to access a certain container method.
 The method-call arrows illustrate which accesses are granted.
 As far as the accesses between components are concerend the grant/method-call arrows
 illustrate how the interfaces between them are released.
