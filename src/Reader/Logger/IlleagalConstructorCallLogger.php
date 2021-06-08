@@ -80,4 +80,16 @@ class IlleagalConstructorCallLogger
         }
         $this->writeLine($this->secondLevelLine);
     }
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *                                Block
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    public function writeBlock(string $string, string $pre = '') : void
+    {
+        $parts       = explode("\n", $string);
+        for ($i = 0; $i < count($parts); $i++) {
+            $this->writeLine($pre . $parts[$i]);
+        }
+    }
 }

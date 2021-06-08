@@ -131,7 +131,7 @@ class IlleagalConstructorCall
         }
         foreach ($this->mapping as $params) {
             $params[self::FILE_PATH_KEY] = $filepath;
-            $detector = new ConstructorCallDetector($content, $params, $this->logger);
+            $detector = new ConstructorCallDetector($content, $params, $this->logger, $this);
             $this->errorCount += $detector->detect();
         }
         echo "$filepath, $filename \n";
