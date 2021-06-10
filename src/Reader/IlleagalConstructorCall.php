@@ -10,6 +10,9 @@ use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger;
 
 class IlleagalConstructorCall
 {
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *    INIT
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     const FILE_PATH_KEY = 'filePath';
 
     private Component   $component;
@@ -39,6 +42,16 @@ class IlleagalConstructorCall
         $this->libInstallationPath = $this->getRealPath(__DIR__ . '/../../..');
     }
 
+
+
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *    RUN
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     public function run() : int
     {
         $this->logger->writeHeader("\n" .
@@ -65,6 +78,15 @@ class IlleagalConstructorCall
     }
 
 
+
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *     READ
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     private function readDir($path) : void
     {
         $list = scandir($path);
@@ -86,6 +108,29 @@ class IlleagalConstructorCall
         }
     }
 
+    private function readFile($filepath, $filename)
+    {
+        $content = file_get_contents($filepath);
+        if (strpos($content, '<?php') === false) {
+            return;
+        }
+        foreach ($this->mapping as $params) {
+            $params[self::FILE_PATH_KEY] = $filepath;
+            $detector = new ConstructorCallDetector($content, $params, $this->logger, $this);
+            $this->errorCount += $detector->detect();
+        }
+    }
+
+
+
+
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *     FILTER /QUALIFY
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     private function fileNamePatternQualifies($filename) : bool
     {
@@ -123,18 +168,5 @@ class IlleagalConstructorCall
         return false;
     }
 
-
-    private function readFile($filepath, $filename)
-    {
-        $content = file_get_contents($filepath);
-        if (strpos($content, '<?php') === false) {
-            return;
-        }
-        foreach ($this->mapping as $params) {
-            $params[self::FILE_PATH_KEY] = $filepath;
-            $detector = new ConstructorCallDetector($content, $params, $this->logger, $this);
-            $this->errorCount += $detector->detect();
-        }
-    }
 
 }
