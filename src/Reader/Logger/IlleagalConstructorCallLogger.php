@@ -56,6 +56,10 @@ class IlleagalConstructorCallLogger
     {
         echo $string . "\n";
     }
+ public function write(string $string)
+    {
+        echo $string;
+    }
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

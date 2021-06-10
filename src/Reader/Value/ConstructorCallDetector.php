@@ -8,6 +8,10 @@ use Miniature\Component\Reader\IlleagalConstructorCall;
 
 class ConstructorCallDetector
 {
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *        INIT
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     private array $params;
     private Logger $logger;
     private IlleagalConstructorCall $reader;
@@ -40,11 +44,10 @@ class ConstructorCallDetector
         }
     }
 
-    public function detect() : int
-    {
-        $this->detectUseStaement();
-        return $this->errors;
-    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *        WRITE
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     private function writeDetectionHeader() : void
     {
@@ -60,9 +63,36 @@ class ConstructorCallDetector
         );
     }
 
+    private function writeMatchList(array $callMatches) : void
+    {
+        for ($i = 0; $i < count($callMatches); $i++) {
+            for ($ii = 0; $ii < count($callMatches[$i]); $ii++) {
+                $this->logger->write($this->indent. ($i + 1) . '.');
+                if (is_string($callMatches[$i][$ii])) {
+                    $this->logger->writeBlock(
+                        $callMatches[$i][$ii], $this->indent
+                    );
+                }
+                $this->logger->writeLine('');
+                $this->logger->writeLine('');
+                $this->errors++;
+            }
+        }
+    }
 
 
 
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *        DETECT
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+    public function detect() : int
+    {
+        $this->detectFullQualifiedCall();
+        $this->detectUseStaement();
+        return $this->errors;
+    }
 
     private function detectUseStaement() : void
     {
@@ -79,7 +109,7 @@ class ConstructorCallDetector
             $constructorCallRegex = str_replace($this->classNameSimple, $aliasName, $constructorCallRegex);
         }
 
-        preg_match($constructorCallRegex, $this->code, $callMatches);
+        preg_match_all($constructorCallRegex, $this->code, $callMatches, PREG_SET_ORDER);
         if (empty($callMatches)) {
             return;
         }
@@ -92,13 +122,23 @@ class ConstructorCallDetector
             $this->logger->writeLine('');
         }
 
-        for ($i = 0; $i < count($callMatches); $i++) {
-            $this->logger->writeLine($this->indent. ($i + 1) . '.  ');
-            $this->logger->writeBlock(
-                $callMatches[$i], $this->indent
-            );
-            $this->logger->writeLine('');
-        }
+        $this->writeMatchList($callMatches);
     }
+
+
+
+    private function detectFullQualifiedCall() : void
+    {
+        preg_match_all($this->constructorCallRegexFull, $this->code, $callMatches, PREG_SET_ORDER);
+        if (empty($callMatches)) {
+            return;
+        }
+
+        $this->writeDetectionHeader();
+        $this->writeMatchList($callMatches);
+    }
+
+
+
 
 }

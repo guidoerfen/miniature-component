@@ -10,6 +10,8 @@ use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger;
 
 class IlleagalConstructorCall
 {
+    const FILE_PATH_KEY = 'filePath';
+
     private Component   $component;
     private DiContainer $diContainer;
     private IlleagalConstructorCallLogger $logger;
@@ -121,7 +123,6 @@ class IlleagalConstructorCall
         return false;
     }
 
-    const FILE_PATH_KEY = 'filePath';
 
     private function readFile($filepath, $filename)
     {
@@ -134,7 +135,7 @@ class IlleagalConstructorCall
             $detector = new ConstructorCallDetector($content, $params, $this->logger, $this);
             $this->errorCount += $detector->detect();
         }
-        echo "$filepath, $filename \n";
+        #echo "$filepath, $filename \n";
     }
 
 }
