@@ -135,7 +135,6 @@ class IlleagalConstructorCall
             $detector = new ConstructorCallDetector($content, $params, $this->logger, $this);
             $this->errorCount += $detector->detect();
         }
-        #echo "$filepath, $filename \n";
     }
 
 }
