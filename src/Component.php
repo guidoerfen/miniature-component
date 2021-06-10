@@ -12,6 +12,9 @@ use Miniature\DiContainer\Syntax\MapperAbstract as DiSyntaxMapperAbstract;
 use Miniature\DiContainer\Syntax\MapperNative as DiSyntaxMapperNative;
 use Miniature\Component\Coupling\TraceElement;
 use Miniature\Component\Coupling\Supervisor;
+use Miniature\Component\Reader\IlleagalConstructorCall;
+use Miniature\Component\Reader\Value\IlleagalConstructorCallParameters;
+use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger;
 
 /**
  * Class Component
@@ -104,6 +107,27 @@ abstract class Component
     {
         return null;
     }
+
+
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *   VIOLATION SCANS
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    public function detectViolations(string $path, array $excludeDirectoryNames = []) : int
+    {
+        return (new IlleagalConstructorCall(
+                (new IlleagalConstructorCallParameters())
+                    ->setRootPath($path)
+                    ->setDiContainer($this->container)
+                    ->setExcludeDirectories($excludeDirectoryNames)
+                    ->setLogger(new IlleagalConstructorCallLogger())
+                    ->setComponent($this)
+            )
+        )->run();
+    }
+
 
 
 

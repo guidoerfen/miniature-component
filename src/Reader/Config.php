@@ -4,6 +4,7 @@ namespace Miniature\Component\Reader;
 
 use Miniature\Component\Reader\YamlParserDecoratorInterface;
 use Miniature\Component\Reader\Value\ConfigParameters;
+use Miniature\DiContainer\DiContainer;
 
 /**
  * Class Config
@@ -78,7 +79,7 @@ class Config
         array_shift($list); // remove '..'
 
         foreach ($list as $filename) {
-            $filepath = $path.'/'.$filename;
+            $filepath = str_replace('//', '/', $path.'/'.$filename);
             if (is_dir($filepath) && $this->isAllowedAddToSubPathList($filename)) {
                 $dirPathList[] = $filepath;
                 continue;
@@ -142,7 +143,7 @@ class Config
         if (! is_array($array)) {
             throw new \RuntimeException("File '$filepath' is expected to return array!");
         }
-        $this->addArrayContentToValueCollection($array);
+        $this->addArrayContentToValueCollection($array, $filepath);
     }
 
     /**
@@ -166,7 +167,7 @@ class Config
                 E_USER_WARNING
             );
         }
-        $this->addArrayContentToValueCollection($array);
+        $this->addArrayContentToValueCollection($array, $filepath);
     }
 
 
@@ -178,11 +179,12 @@ class Config
     /**
      * Crawls up to one recursive level in order to override with values read in sub-directories.
      */
-    private function addArrayContentToValueCollection(array $input) : void
+    private function addArrayContentToValueCollection(array $input, string $filepath) : void
     {
         foreach ($input as $offset => $content) {
             if (is_iterable($content)) {
                 foreach ($content as $key => $value) {
+                    $value[DiContainer::DECLARED_IN_KEY] = $filepath;
                     $this->values[$offset][$key] = $value;
                 }
             }
