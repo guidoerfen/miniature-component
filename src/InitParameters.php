@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component;
 
 use Miniature\DiContainer\Syntax\MapperAbstract as DiSyntaxMapperAbstract;
 use Miniature\Component\Reader\YamlParserDecoratorInterface;
-use http\Exception\RuntimeException;
 
 /**
  * Class InitParameters

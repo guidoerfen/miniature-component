@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component;
 
@@ -43,7 +44,7 @@ abstract class Component
     protected ?DiContainer                   $container           = null;
     private   ?DiSyntaxMapperAbstract        $diSyntaxMapper      = null;
     private   ?YamlParserDecoratorInterface  $yamlParserDecorator = null;
-    private   ?Supervisor                    $couplingSupervisor = null;
+    private   ?Supervisor                    $couplingSupervisor  = null;
 
     private ?string $configDirectoryPath     = null;
     private ?string $dotEnvFilePath          = null;
@@ -90,7 +91,7 @@ abstract class Component
 
     final protected function __clone() {}
 
-    private function init(InitParametersInterface $paramsObject = null)
+    private function init(InitParametersInterface $paramsObject = null) : void
     {
         if ($paramsObject instanceof InitParametersInterface) {
             $this->params = $paramsObject;

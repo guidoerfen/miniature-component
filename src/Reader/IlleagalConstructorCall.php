@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component\Reader;
 
@@ -8,6 +9,12 @@ use Miniature\Component\Reader\Value\IlleagalConstructorCallParameters;
 use Miniature\DiContainer\DiContainer;
 use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger;
 
+/**
+ * Class IlleagalConstructorCall
+ * @package Miniature\Component\Reader
+ * @author Guido Erfen <sourcecode@erfen.de>
+ * @see https://github.com/guidoerfen/miniature-component#reading-the-configuration-directory
+ */
 class IlleagalConstructorCall
 {
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

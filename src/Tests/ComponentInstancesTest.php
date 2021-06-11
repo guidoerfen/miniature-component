@@ -11,6 +11,11 @@ use Miniature\Component\Tests\TestEnv\Components\BComponent;
 use PHPUnit\Framework\TestCase;
 
 
+/**
+ * Class ComponentInstancesTest
+ * @package Miniature\Component\Tests
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 class ComponentInstancesTest extends TestCase
 {
     public function testInstnatiationOfInheritor()

@@ -1,9 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component;
 
 use Miniature\DiContainer\Syntax\MapperAbstract as DiSyntaxMapperAbstract;
 
+/**
+ * Interface InitParametersInterface
+ * @package Miniature\Component
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 interface InitParametersInterface
 {
     public function getAppRootPath()                    : ?string;

@@ -8,6 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 require './autoload.php';
 
+/**
+ * Class ReaderBehaviourTest
+ * @package Miniature\Component\Tests
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 class ReaderBehaviourTest extends TestCase
 {
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -30,7 +35,7 @@ class ReaderBehaviourTest extends TestCase
     }
 
 
-    protected function getMissingFieldMessage(string $offset, bool $isset, bool $isArray, bool $isNotEmpty)
+    protected function getMissingFieldMessage(string $offset, bool $isset, bool $isArray, bool $isNotEmpty) : string
     {
         return 'Expected field ' . $offset . ' to be an filled array but '.
                ($isset ? ($isArray ? ($isNotEmpty ? '' : 'it is empty.') : 'it is not an array.') : 'it is not set.');
@@ -44,7 +49,7 @@ class ReaderBehaviourTest extends TestCase
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *          1st RECOUSION LEVEL
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    public function mappingOffsetProvider()
+    public function mappingOffsetProvider() : array
     {
         return [
             ['di_mapping'],
@@ -76,7 +81,7 @@ class ReaderBehaviourTest extends TestCase
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *          2nd RECOURSION LEVEL
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    public function classOffsetProvider()
+    public function classOffsetProvider() : array
     {
         return [
             ['class01'],

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component\Reader\Value;
 
@@ -6,6 +7,11 @@ use Miniature\DiContainer\DiContainer;
 use Miniature\Component\Reader\Logger\IlleagalConstructorCallLogger as Logger;
 use Miniature\Component\Reader\IlleagalConstructorCall;
 
+/**
+ * Class ConstructorCallDetector
+ * @package Miniature\Component\Reader\Value
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 class ConstructorCallDetector
 {
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Miniature\Component\Coupling;
 
@@ -18,16 +19,16 @@ class TraceElement
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     private string $class;
     private string $function;
-    private string $line;
+    private int    $line;
 
     public function __construct(array $traceData)
     {
         $this->class    = isset($traceData['class'   ]) ? $traceData['class'   ] : '';
         $this->function = isset($traceData['function']) ? $traceData['function'] : '';
-        $this->line     = isset($traceData['line'    ]) ? $traceData['line'    ] : '';
+        $this->line     = isset($traceData['line'    ]) ? (int) $traceData['line'    ] : '';
     }
 
-    public function __get($member) : ?string
+    public function __get(string $member) : ?string
     {
         if (isset($this->$member)) {
             return $this->$member;

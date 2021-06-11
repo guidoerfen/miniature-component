@@ -1,9 +1,13 @@
 <?php
-
+declare(strict_types=1);
 
 namespace Miniature\Component\Reader\Logger;
 
-
+/**
+ * Class IlleagalConstructorCallLogger
+ * @package Miniature\Component\Reader\Logger
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 class IlleagalConstructorCallLogger
 {
     private $firstLevelLine   = '* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *';
@@ -35,7 +39,7 @@ class IlleagalConstructorCallLogger
         $blank       = substr($this->blank, 0, $length);
         $intoLength  = strlen($writeInto) - $length;
         $isOdd       = $intoLength % 2;
-        $blankLength = floor($intoLength / 2);
+        $blankLength = (int) floor($intoLength / 2);
         $startBlank  = substr($writeInto, 0, $blankLength);
         $endBlank    = ($isOdd ? ' ' : '') . substr($writeInto, $blankLength * -1);
 
@@ -52,11 +56,12 @@ class IlleagalConstructorCallLogger
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *                                WRITE
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    public function writeLine(string $string)
+    public function writeLine(string $string) : void
     {
         echo $string . "\n";
     }
- public function write(string $string)
+
+    public function write(string $string) : void
     {
         echo $string;
     }

@@ -10,7 +10,11 @@ use Miniature\Component\Tests\TestEnv\Components\AComponent;
 use Miniature\Component\Tests\TestEnv\Components\BComponent;
 use PHPUnit\Framework\TestCase;
 
-
+/**
+ * Class InitParametersTest
+ * @package Miniature\Component\Tests
+ * @author Guido Erfen <sourcecode@erfen.de>
+ */
 class InitParametersTest extends TestCase
 {
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
