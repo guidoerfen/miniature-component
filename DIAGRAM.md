@@ -73,3 +73,9 @@ coupling:
             D2: true
             
 ```
+
+
+The
+[**violation detection routine**](https://github.com/guidoerfen/miniature-component/blob/master/VIOLATION-DETECTING.md)
+is providing control on the classes included to the DI-container
+not being instantiated in illegal way.

@@ -36,7 +36,8 @@ class IlleagalConstructorCallLogger
     {
         $parts       = explode("\n", $input);
         $length      = $this->getLongestStringLength($parts);
-        $blank       = substr($this->blank, 0, $length);
+        $writeInto   = $this->optimizeWriteInto($writeInto, $length);
+        $blank       = substr($this->blank . $this->blank. $this->blank, 0, $length);
         $intoLength  = strlen($writeInto) - $length;
         $isOdd       = $intoLength % 2;
         $blankLength = (int) floor($intoLength / 2);
@@ -44,12 +45,23 @@ class IlleagalConstructorCallLogger
         $endBlank    = ($isOdd ? ' ' : '') . substr($writeInto, $blankLength * -1);
 
         for ($i = 0; $i < count($parts); $i++) {
-            $string = $parts[$i];
-            $blankLength = $length - strlen($string);
-            $temp        = $parts[$i] . substr($blank, 0, $blankLength);
-            $parts[$i]   = $startBlank . $temp . $endBlank;
+            $string          = $parts[$i];
+            $currBlankLength = $length - strlen($string);
+            $temp            = $string . substr($blank, 0, $currBlankLength);
+            $parts[$i]       = $startBlank . $temp . $endBlank;
         }
         return $parts;
+    }
+
+    private function optimizeWriteInto(string $writeInto, int $longestLength) : string
+    {
+        $targetLength = strlen($writeInto);
+        if ($longestLength < $targetLength) {
+            return $writeInto;
+        }
+        $difference = $longestLength - $targetLength + 10;
+        $writeInto  = substr($writeInto, 0, 20) . substr($this->blank, 0, $difference) . substr($writeInto, 21);
+        return $writeInto;
     }
 
 

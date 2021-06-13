@@ -16,6 +16,9 @@ As a facade, the component is provided with a mechanism of access restriction.
 This access restriction in return ist the wiring of [**the component coupling**](#wiring-the-coupling)
 and the much-needed bottleneck regarding the communication of the classes
 residing in the container to the outer world.
+There is also a
+[**violation detection routine**](https://github.com/guidoerfen/miniature-component/blob/master/VIOLATION-DETECTING.md)
+ensuring the black box is kept closed.
 
 The behaviour can be changed easily by the help of certain injections and overrides.
 The DI-Container is an independent package of its own.
@@ -684,6 +687,18 @@ SelfSpeakingComponent::getInstance()->get('person_access')->somePublicMethod('st
 If you feel tempted to declare everything `public` or question what this cumbersome stuff is for,
 I'd suggest to gain info about the Cohesion & Coupling problem and what component architectures are about.
 
+
+
+#### Key 'skipViolationScan'
+```YAML
+        skipViolationScan: true
+```
+This is not includet to the upper example.
+This key set to `true` will disable the
+[violation detection](https://github.com/guidoerfen/miniature-component/blob/master/VIOLATION-DETECTING.md)
+in the violation scan routine.
+
+This for instance is useful in cases of vendor classes having been included to the mapping.
 
 
 #### Overriding arguments on the fly
