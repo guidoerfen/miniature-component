@@ -98,7 +98,7 @@ class IlleagalConstructorCall
      *     READ
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-    private function readDir($path) : void
+    private function readDir(string $path) : void
     {
         $list = scandir($path);
         array_shift($list); // remove '.'
@@ -119,7 +119,7 @@ class IlleagalConstructorCall
         }
     }
 
-    private function readFile($filepath, $filename)
+    private function readFile(string $filepath, string $filename) : void
     {
         $content = file_get_contents($filepath);
         if (strpos($content, '<?php') === false) {
@@ -143,7 +143,7 @@ class IlleagalConstructorCall
      *     FILTER /QUALIFY
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-    private function fileNamePatternQualifies($filename) : bool
+    private function fileNamePatternQualifies(string $filename) : bool
     {
         $firstDotPos = strpos($filename, '.');
         if ($firstDotPos === false) {
@@ -155,7 +155,7 @@ class IlleagalConstructorCall
         return true;
     }
 
-    private function dirNameQualifies($dirname, $dirpath) : bool
+    private function dirNameQualifies(string $dirname, string $dirpath) : bool
     {
         $name = strtolower($dirname);
         if ($dirpath === $this->libInstallationPath) {
@@ -167,7 +167,7 @@ class IlleagalConstructorCall
         return true;
     }
 
-    private function fileNameQualifies($filename) : bool
+    private function fileNameQualifies(string $filename) : bool
     {
         $extension = substr($filename, (strrpos($filename, '.')) + 1);
         if (substr($extension, 0, 2) === 'ph') {

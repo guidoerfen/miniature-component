@@ -144,7 +144,4 @@ class ConstructorCallDetector
         $this->writeMatchList($callMatches);
     }
 
-
-
-
 }
