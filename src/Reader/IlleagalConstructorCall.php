@@ -61,11 +61,13 @@ class IlleagalConstructorCall
 
     public function run() : int
     {
+        $this->logger->writeLogo();;
         $this->logger->writeHeader("\n" .
             "Detecting: \n- Violations concerning Component:\n  " .
             get_class($this->component) . "\n" .
             "- Root-Directory to be scanned: \n" .
-            "  '$this->rootPath' \n"
+            "  '$this->rootPath' \n",
+            true
         );
         $this->logger->writeLine('');
 

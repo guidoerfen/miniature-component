@@ -82,10 +82,12 @@ class IlleagalConstructorCallLogger
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *                                HEADER
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    public function writeHeader(string $string) : void
+    public function writeHeader(string $string, bool $skipFirstLine = false) : void
     {
         $parts = $this->fillToEqualLength($string, $this->firstLevelBlank);
-        $this->writeLine($this->firstLevelLine);
+        if (! $skipFirstLine) {
+            $this->writeLine($this->firstLevelLine);
+        }
         for ($i = 0; $i < count($parts); $i++) {
             $this->writeLine($parts[$i]);
         }
@@ -112,5 +114,20 @@ class IlleagalConstructorCallLogger
         for ($i = 0; $i < count($parts); $i++) {
             $this->writeLine($pre . $parts[$i]);
         }
+    }
+
+
+    public function writeLogo()
+    {
+        $string = "\n" .
+                 "         ,--.      ,--.        ,--.                     \n" .
+                 ",--,--,--`--,--,--,`--',--,--,-'  '-,--.,--,--.--.,---. \n" .
+                 "|        ,--|      ,--' ,-.  '-.  .-|  ||  |  .--| .-. :\n" .
+                 "|  |  |  |  |  ||  |  \ '-'  | |  | '  ''  |  |  \   --.\n" .
+                 "`--`--`--`--`--''--`--'`--`--' `--'  `----'`--'   `----'\n" .
+                 "M A P P I N G  -  V I O L A T I O N S    D E T E C T O R\n" .
+                 "\n";
+        $this->writeHeader($string);
+
     }
 }
