@@ -16,7 +16,7 @@ The example below demonstrates what the detector is looking for:
   - these only will be complained in connection to an access- or con
 
 It is also possible to skip the detection of certain wirings by adding the
-[`*skip violation detection*`](https://github.com/guidoerfen/miniature-component/blob/master/VIOLATION-DETECTING.md)-flag
+[**`skip violation detection`**](https://github.com/guidoerfen/miniature-component/blob/master/README.md#key-skipviolationscan)-flag
 to the DI-mapping.
 
 ```shell
