@@ -7,6 +7,8 @@ We don't know if we've got everything together currently.
 Extensive testing needs to be done as well.
 
 ### Purpose
+<img align="right" width="320" height="300" src="https://github.com/guidoerfen/miniature-component/blob/master/img/component-diagram-300px.png">
+
 This is a template for a **component of PHP-classes**
 provided by a [**dependency injection container**](#the-di-mapping) (DI-Container).
 The container itself is hidden by the [**component instance**](#the-instance-of-the-component) (**black box approach**)
