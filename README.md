@@ -751,7 +751,7 @@ This approach would also work with numeric keys basically, but would one fell co
 All files in the config-directory and it's sub-directories recursively will be read,
 given that the format is supported. Currently, that is:
 - **PHP**: The PHP-files always should return an array
-- **YAML**: This is depending on the PECL-extension for YAML is loaded. Alternatively the component class can be injected with a decorator that holds the PHP-based YAML-interpreter of youir choice. More about this [here](#yaml-support)
+- **YAML**: This is depending on the PECL-extension for YAML is loaded. Alternatively the component class can be injected with a decorator that holds the PHP-based YAML-interpreter of your choice. More about this [here](#yaml-support)
 
 #### 1st recursion level: selecting the interpreter
 There are three main keys for the three main purposes: `di_mapping`, `params`, and `coupling`.
