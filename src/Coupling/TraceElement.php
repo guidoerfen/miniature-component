@@ -23,9 +23,9 @@ class TraceElement
 
     public function __construct(array $traceData)
     {
-        $this->class    = isset($traceData['class'   ]) ? $traceData['class'   ] : '';
-        $this->function = isset($traceData['function']) ? $traceData['function'] : '';
-        $this->line     = isset($traceData['line'    ]) ? (int) $traceData['line'    ] : '';
+        $this->class    = $traceData['class'   ] ?? '';
+        $this->function = $traceData['function'] ?? '';
+        $this->line     = $traceData['line'    ] ?? '';
     }
 
     public function __get(string $member) : ?string
